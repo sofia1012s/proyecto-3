@@ -150,4 +150,10 @@ void getTemperature(void)
     presion = bmp.readPressure();
     pixels.setPixelColor(0, pixels.Color(255, 0, 0));
   }
+
+  if (bandera == 2)
+  {
+     pixels.setPixelColor(0, pixels.Color(0, 255, 0));
+  }
+
 }

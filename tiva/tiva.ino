@@ -210,6 +210,7 @@ void writeSD(void)
 
   if (archivo)
   {
+     Serial2.write(2); //Escribe en UART2
     Serial.println("\nEscribiendo data");
 
     Serial.print("Temperatura: ");
