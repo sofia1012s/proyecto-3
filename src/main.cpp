@@ -42,7 +42,8 @@ void configurarTimer(void);
 //*****************************************************************************
 //Varibles globales
 //*****************************************************************************
-int temperatura = 0;         //Temperatura tomada por el sensor
+int temperatura = 0; //Temperatura tomada por el sensor
+int presion = 0;
 int bandera = 1;             //bandera para comunicación UART TivaC con Esp32
 boolean banderaUART = false; //bandera para comunicacion UART ESP32 con computadora
 
@@ -146,6 +147,7 @@ void getTemperature(void)
   if (bandera == 0)
   {
     temperatura = bmp.readTemperature();
+    presion = bmp.readPressure();
     pixels.setPixelColor(0, pixels.Color(255, 0, 0));
   }
 }

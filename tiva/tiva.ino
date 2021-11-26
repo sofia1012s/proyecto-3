@@ -1,3 +1,5 @@
+
+
 //*****************************************************************************
 // Universidad del Valle de Guatemala
 // BE3015: Electrónica Digital 2
@@ -13,6 +15,7 @@
 // Librería para SD
 #include <SPI.h>
 #include <SD.h>
+#include <Wire.h>
 
 // Librerías para Pantalla TFT
 #include <stdint.h>
@@ -67,6 +70,10 @@ byte temperatura = 0;
 int decena = 0;
 int unidad = 0;
 int decimal = 0;
+
+const size_t dataLength = 10;
+int data[dataLength];
+int array[2];
 
 //***************************************************************************************************************************************
 // Prototipo de funciones
@@ -139,9 +146,9 @@ void loop()
   sensor();
 
   //Muestra el valor tomado en la pantalla
-  LCD_Print(String(decena), 150, 130, 2, 0x0000, 0xFF01);
-  LCD_Print(String(unidad), 165, 130, 2, 0x0000, 0xFF01);
-  LCD_Print("C", 185, 130, 2, 0x0000, 0xFF01);
+  LCD_Print(String(decena), 170, 130, 2, 0x0000, 0xFF01);
+  LCD_Print(String(unidad), 185, 130, 2, 0x0000, 0xFF01);
+  LCD_Print("C", 205, 130, 2, 0x0000, 0xFF01);
 
   int reading = digitalRead(PUSH2); //Boton para subir dato a la SD
 
@@ -205,7 +212,7 @@ void writeSD(void)
   {
     Serial.println("\nEscribiendo data");
 
-    Serial.print("Distancia: ");
+    Serial.print("Temperatura: ");
     Serial.println(temperatura);
 
     archivo.print(temperatura);
